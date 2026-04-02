@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Needham-Cook | Copywriter & Content Strategist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0A0B;
+            --surface: #141416;
+            --surface2: #1C1C1F;
+            --border: #2A2A2E;
+            --text: #F0F0F2;
+            --text2: #A0A0A8;
+            --text3: #68687A;
+            --accent: #6366F1;
+            --accent2: #818CF8;
+            --green: #34D399;
+            --blue: #60A5FA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+        /* ═══ NAV ═══ */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,10,11,0.8); border-bottom: 1px solid var(--border); }
+        nav .inner { max-width: 1080px; margin: 0 auto; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+        nav .name { font-weight: 700; font-size: 15px; letter-spacing: -0.3px; }
+        nav .links { display: flex; gap: 28px; }
+        nav .links a { color: var(--text2); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+        nav .links a:hover { color: var(--text); }
+
+        /* ═══ HERO ═══ */
+        .hero { padding: 160px 0 100px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%); pointer-events: none; }
+        .hero-content { display: flex; gap: 60px; align-items: center; }
+        .hero-text { flex: 1; }
+        .hero-photo { width: 200px; height: 200px; border-radius: 24px; overflow: hidden; flex-shrink: 0; border: 2px solid var(--border); }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--green); margin-bottom: 24px; }
+        .hero-badge .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .hero h1 { font-size: 52px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg, var(--text) 0%, var(--text2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero .tagline { font-size: 18px; color: var(--text2); max-width: 520px; line-height: 1.7; margin-bottom: 32px; }
+        .hero .contact-row { display: flex; gap: 20px; font-size: 13px; color: var(--text3); }
+        .hero .contact-row a { color: var(--accent2); text-decoration: none; }
+
+        /* ═══ STATS BAR ═══ */
+        .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; margin: -40px 0 80px; position: relative; z-index: 2; }
+        .stat-item { background: var(--surface); padding: 28px 24px; text-align: center; }
+        .stat-item .number { font-size: 32px; font-weight: 800; letter-spacing: -1px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-item .label { font-size: 12px; color: var(--text3); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+        /* ═══ SECTIONS ═══ */
+        section { padding: 80px 0; }
+        .section-header { margin-bottom: 48px; }
+        .section-header .overline { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+        .section-header h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; }
+        .section-header p { font-size: 16px; color: var(--text2); margin-top: 8px; max-width: 560px; }
+
+        /* ═══ CASE STUDY CARDS ═══ */
+        .case-grid { display: grid; gap: 20px; }
+        .case-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.3s, transform 0.2s; }
+        .case-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .case-card .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+        .case-card h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+        .case-card .meta { font-size: 13px; color: var(--text3); margin-bottom: 12px; }
+        .case-card p { font-size: 15px; color: var(--text2); line-height: 1.7; }
+        .case-card .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; }
+        .tag-green { background: rgba(52,211,153,0.1); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
+        .tag-blue { background: rgba(96,165,250,0.1); color: var(--blue); border: 1px solid rgba(96,165,250,0.2); }
+        .tag-purple { background: rgba(99,102,241,0.1); color: var(--accent2); border: 1px solid rgba(99,102,241,0.2); }
+
+        /* ═══ WRITING SAMPLES GRID ═══ */
+        .samples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .sample-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: border-color 0.3s; }
+        .sample-card:hover { border-color: var(--accent); }
+        .sample-card .format { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .sample-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+        .sample-card .client { font-size: 13px; color: var(--text3); margin-bottom: 10px; }
+        .sample-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+        /* ═══ SCREENSHOTS ═══ */
+        .screenshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .ss-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+        .ss-card img { width: 100%; height: auto; display: block; }
+        .ss-card .caption { padding: 14px 18px; font-size: 13px; color: var(--text2); }
+
+        /* ═══ TESTIMONIAL ═══ */
+        .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; position: relative; }
+        .testimonial-card::before { content: '\201C'; position: absolute; top: 20px; left: 28px; font-size: 64px; color: var(--accent); opacity: 0.3; font-family: Georgia, serif; line-height: 1; }
+        .testimonial-card .quote { font-size: 18px; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 20px; padding-left: 20px; }
+        .testimonial-card .author-row { display: flex; align-items: center; gap: 12px; padding-left: 20px; }
+        .testimonial-card .author-name { font-size: 15px; font-weight: 700; }
+        .testimonial-card .author-role { font-size: 13px; color: var(--text3); }
+
+        /* ═══ SKILLS ═══ */
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill { padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; background: var(--surface2); border: 1px solid var(--border); color: var(--text2); transition: border-color 0.2s, color 0.2s; }
+        .skill:hover { border-color: var(--accent); color: var(--text); }
+
+        /* ═══ CTA ═══ */
+        .cta-section { text-align: center; padding: 100px 0; }
+        .cta-section h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+        .cta-section p { color: var(--text2); font-size: 16px; margin-bottom: 32px; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: white; padding: 16px 36px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 16px; transition: transform 0.2s, box-shadow 0.2s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99,102,241,0.3); }
+
+        /* ═══ FOOTER ═══ */
+        footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; font-size: 13px; color: var(--text3); }
+        footer a { color: var(--accent2); text-decoration: none; }
+
+        /* ═══ DIVIDER ═══ */
+        .divider { height: 1px; background: var(--border); margin: 0; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="inner">
+        <span class="name">Nicolas Needham-Cook</span>
+        <div class="links">
+            <a href="#work">Work</a>
+            <a href="#samples">Samples</a>
+            <a href="#results">Results</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge"><span class="dot"></span> Available for remote work</div>
+                <h1>I write copy that moves numbers.</h1>
+                <p class="tagline">Content strategist and copywriter. I have built brands to 2M+ followers, scaled a client 13x in 30 days, and write scripts that hold attention for 25 minutes straight. From ad copy to email sequences to long-form scripts, I help brands turn words into revenue.</p>
+                <div class="contact-row">
+                    <a href="mailto:needhamcookn@gmail.com">needhamcookn@gmail.com</a>
+                    <span>(778) 686-9290</span>
+                    <span>Vancouver, BC</span>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="screenshots/Headshot.png" alt="Nicolas Needham-Cook">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div class="container">
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="number">$50K+</div>
+            <div class="label">Monthly Personal Revenue</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">2M+</div>
+            <div class="label">Followers Grown</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">13x</div>
+            <div class="label">Best Client Growth</div>
+        </div>
+        <div class="stat-item">
+            <div class="number">100M+</div>
+            <div class="label">Content Views</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ CASE STUDIES ═══ -->
+<section id="work">
+<div class="container">
+    <div class="section-header">
+        <div class="overline">Case Studies</div>
+        <h2>Real results from real projects</h2>
+    </div>
+
+    <div class="case-grid">
+        <div class="case-card">
+            <h3>Client Growth: $3K to $40K/month in 30 Days</h3>
+            <div class="meta">Artimemo (DTC Stationery) | Content Strategy + Paid Media | 2024</div>
+            <p>Took over content strategy and campaign management for an e-commerce brand. Rewrote all ad copy, rebuilt the content calendar, and optimized the paid media funnel. Revenue scaled from $3,000 to $40,000 in 30 days.</p>
+            <div class="tags">
+                <span class="tag tag-green">13x Revenue</span>
+                <span class="tag tag-green">30-Day Turnaround</span>
+                <span class="tag tag-blue">Reference Available</span>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <h3>YouTube Channel Portfolio: $50K+/month from Content</h3>
+            <div class="meta">10+ Active Channels | Finance, Education, Entertainment | 2024-Present</div>
+            <p>Built and manage a portfolio of YouTube channels. I write all scripts (3,000-5,000 words each), design content strategy, manage SEO, and oversee automated production pipelines that reduced production time by 85%.</p>
+            <div class="tags">
+                <span class="tag tag-green">$50K+/month</span>
+                <span class="tag tag-purple">85% Time Reduction</span>
+                <span class="tag tag-blue">10+ Channels</span>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <h3>Personal Brand: 0 to 2M+ Followers</h3>
+            <div class="meta">TikTok (@nickynoodlepaws, @nick.nc.lifts) + YouTube + Instagram | 2020-Present</div>
+            <p>Built a personal brand from scratch across platforms. Wrote all captions, scripts, hooks, and CTAs. Managed brand partnerships generating five-figure annual income. Recent philosophy series hit 800K views in one week.</p>
+            <div class="tags">
+                <span class="tag tag-green">2M+ Followers</span>
+                <span class="tag tag-green">800K Views (1 Week)</span>
+                <span class="tag tag-purple">885+ Discord Members</span>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WRITING SAMPLES ═══ -->
+<section id="samples">
+<div class="container">
+    <div class="section-header">
+        <div class="overline">Writing Samples</div>
+        <h2>7 projects. 7 formats. 4 voices.</h2>
+        <p>Social, email, landing pages, paid ads, Shopify, long-form scripts, short-form, and corporate.</p>
+    </div>
+
+    <div class="samples-grid">
+        <div class="sample-card">
+            <div class="format">Social + Paid Ads</div>
+            <h3>Artimemo Campaign</h3>
+            <div class="client">Instagram, TikTok, Meta Ads</div>
+            <p>Organic captions, TikTok ad scripts, and Meta ad variants that helped scale from $3K to $40K/month.</p>
+        </div>
+
+        <div class="sample-card">
+            <div class="format">Email Marketing</div>
+            <h3>Product Launch Sequence</h3>
+            <div class="client">Artimemo | Klaviyo | 3-Email Flow</div>
+            <p>Re-engaged a cold list with a 44% open rate. Sold out the first batch in 4 days.</p>
+        </div>
+
+        <div class="sample-card">
+            <div class="format">Shopify Copy</div>
+            <h3>Product Page Rewrite</h3>
+            <div class="client">Artimemo | Before & After</div>
+            <p>Rewrote descriptions from spec sheets to experience-driven copy. 1.8% to 2.4% conversion rate.</p>
+        </div>
+
+        <div class="sample-card">
+            <div class="format">Long-Form Scripts</div>
+            <h3>3 Channels, 3 Voices</h3>
+            <div class="client">Markus Graves | Interstellar Eye | NickNc</div>
+            <p>Tax authority, academic analyst, casual peer. Same writer, three completely different audiences.</p>
+        </div>
+
+        <div class="sample-card">
+            <div class="format">Short-Form</div>
+            <h3>Miami Philosophy Series</h3>
+            <div class="client">NickNc | TikTok + Reels | 12 Scripts</div>
+            <p>800K+ views in week one. No CTA in any video. The content was the funnel.</p>
+        </div>
+
+        <div class="sample-card">
+            <div class="format">Landing Page</div>
+            <h3>Mentorship Program</h3>
+            <div class="client">$1,699 Conversion Page</div>
+            <p>Anti-guru positioning. Converts skeptical Discord members into paid applicants. ~8% application rate.</p>
+        </div>
+
+        <div class="sample-card">
+            <div class="format">Corporate</div>
+            <h3>ARCA X-Prize Video</h3>
+            <div class="client">Carbon Removal Technology</div>
+            <p>Full script and production for a competitive award application. Confidential project.</p>
+        </div>
+
+        <div class="sample-card" style="display: flex; align-items: center; justify-content: center; border-style: dashed;">
+            <a href="samples.html" style="color: var(--accent2); text-decoration: none; font-weight: 700; font-size: 15px;">View All Samples &rarr;</a>
+        </div>
+    </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ RESULTS ═══ -->
+<section id="results">
+<div class="container">
+    <div class="section-header">
+        <div class="overline">Proof</div>
+        <h2>Real analytics. Real screenshots.</h2>
+    </div>
+
+    <div class="screenshot-grid">
+        <div class="ss-card">
+            <img src="screenshots/Screenshot of interstellar eye analytics.png" alt="YouTube Analytics">
+            <div class="caption">One channel: 1.2M views, $24K revenue in 28 days</div>
+        </div>
+        <div class="ss-card">
+            <img src="screenshots/Screenshot of ArtiMmeo website.png" alt="Artimemo">
+            <div class="caption">Artimemo: product page copy and ad campaigns I wrote</div>
+        </div>
+        <div class="ss-card">
+            <img src="screenshots/Screenshot of Yifeng showing me is income (1st month).png" alt="Client Month 1">
+            <div class="caption">Artimemo Month 1: $91K revenue, 1,433 orders</div>
+        </div>
+        <div class="ss-card">
+            <img src="screenshots/Screenshot of Yifeng showing me is income (2nd month).png" alt="Client Month 2">
+            <div class="caption">Month 2: $95K revenue. Client sending my commission.</div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section>
+<div class="container">
+    <div class="section-header">
+        <div class="overline">Testimonial</div>
+        <h2>What clients say</h2>
+    </div>
+
+    <div class="testimonial-card">
+        <div class="quote">"Nicolas completely transformed our content strategy. Within 30 days our monthly revenue went from $3,000 to over $40,000. His copywriting and campaign optimization skills are exceptional, especially for someone so early in their career."</div>
+        <div class="author-row">
+            <div>
+                <div class="author-name">Yifeng Zhu</div>
+                <div class="author-role">Founder, Artimemo</div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ SKILLS ═══ -->
+<section>
+<div class="container">
+    <div class="section-header">
+        <div class="overline">Toolkit</div>
+        <h2>What I work with daily</h2>
+    </div>
+
+    <div class="skills-wrap">
+        <span class="skill">Long-Form Copywriting</span>
+        <span class="skill">SEO Content Strategy</span>
+        <span class="skill">Email Marketing</span>
+        <span class="skill">Social Media Copy</span>
+        <span class="skill">Ad Copy (Meta, Google)</span>
+        <span class="skill">Script Writing</span>
+        <span class="skill">Shopify</span>
+        <span class="skill">Klaviyo</span>
+        <span class="skill">Content Calendars</span>
+        <span class="skill">Campaign Management</span>
+        <span class="skill">Analytics & Reporting</span>
+        <span class="skill">WordPress</span>
+        <span class="skill">AI Automation Tools</span>
+        <span class="skill">Video Production</span>
+        <span class="skill">Data Analysis</span>
+    </div>
+</div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-section" id="contact">
+    <div class="container">
+        <h2>Let's work together.</h2>
+        <p>Available for remote work starting April 20, 2026.</p>
+        <a href="mailto:needhamcookn@gmail.com" class="cta-btn">Get in Touch &rarr;</a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>Nicolas Needham-Cook | <a href="mailto:needhamcookn@gmail.com">needhamcookn@gmail.com</a> | (778) 686-9290 | Vancouver, BC</p>
+    </div>
+</footer>
+
+</body>
+</html>

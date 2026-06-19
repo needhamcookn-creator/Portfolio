@@ -39,6 +39,7 @@ A good analysis touches all four. If you only ever say "the algorithm did it," y
 |---|------|----------------|
 | 01 | [`01-case-clavicular.md`](01-case-clavicular.md) | The full case study: how Braden Peters / Clavicular rose, the pain points he monetizes, the business model, the controversy, and what to learn from it. |
 | 02 | [`02-philosophy-and-psychology.md`](02-philosophy-and-psychology.md) | The concepts underneath: attention economy, parasocial relationships, the dopamine loop, persuasive design, and the philosophy of attention (James & Weil). |
+| 03 | [`03-the-next-clavicular.md`](03-the-next-clavicular.md) | Predictive field manual: the structural recipe, ranked pain pools, six named archetypes of "the next Clavicular," whether the next one is even human, and an early-warning checklist. Built from a five-angle deep-research pass. |
 
 Start with 01 (the story pulls you in), then read 02 to understand *why* the story worked.
 
